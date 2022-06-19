@@ -1,54 +1,57 @@
 /// @description
-// TODO:
-// create enums for obj_Player.dir
-// change if/else to switch
 
 roll = irandom_range(1, 6);
 
 image_index = roll - 1;
 
 for (var i = 0; i < roll; i++) {
+	
 	currentCell++;
+	
 	if (currentCell > 29) {
 		room_goto(roomWin);
 	}
-	if (obj_Player.dir == 1) { // moving right
-		obj_Player.spaceX += 1;
-		obj_Player.x += 64;
-		if (obj_Player.spaceX == 6) {
-			obj_Player.dir = 2;
-			obj_Player.spaceY = 2;
-		}
-	} else {
-		if (obj_Player.dir == 2) { // moving up
-			obj_Player.spaceY -= 1;	
-			obj_Player.y -= 64;
-			if (obj_Player.spaceY == 0) {
-					obj_Player.dir = 3;	
-					obj_Player.spaceX = 5;
-				}
-			} else {
-			if (obj_Player.dir == 3) { // moving left
-				obj_Player.spaceX -= 1;
-				obj_Player.x -= 64;
-				if (obj_Player.spaceX == 0) {
-					obj_Player.dir = 4;	
-					obj_Player.spaceY = 2;
-				}
-			} else {
-				if (obj_Player.dir == 4) { // moving up
-					obj_Player.spaceY -= 1;
-					obj_Player.y -= 64;
-					if (obj_Player.spaceY == 0) {
-						obj_Player.dir = 1;
-						obj_Player.spaceX = 1;
-					}
-				}
-			}
-
-		}
-		
-	}
 	
+	with (obj_Player) {
+		switch (dir) {
+			case (movDir.right):
+				spaceX += 1;
+				x += step;
+				if (spaceX == 6) {
+					dir = movDir.upThenLeft;
+					spaceY = 2;
+				}
+				break;
+			case (movDir.upThenLeft):
+				spaceY -= 1;
+				y -= step;
+				if (spaceY == 0) {
+					dir = movDir.left;
+					spaceX = 5;
+				}
+				break;
+			case (movDir.left):
+				spaceX -= 1;
+				x -= step;
+				if (spaceX == 0) {
+					dir = movDir.upThenRight;
+					spaceY = 2;
+				}
+				break;
+			case (movDir.upThenRight):
+				spaceY -= 1;
+				y -= step;
+				if (spaceY == 0) {
+					dir = movDir.right;
+					spaceX = 1;
+				}
+				break;
+		}
+	}
 }
 
+if (currentCell % 5 == 0) {
+	currentEvent = "BONUS";	
+} else {
+	currentEvent = "DANGER";
+}
