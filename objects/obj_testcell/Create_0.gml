@@ -2,9 +2,13 @@
 randomize()
 
 roll = 0;
+diceAvailable = true;
 currentCell = 0;
 currentEvent = "";
 image_index = 0;
+
+// player choise in danger events
+global.eventResult = 0
 
 // gui layer
 global.eventLayer = layer_create(-100);
