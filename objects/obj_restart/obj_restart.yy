@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_bonus",
-    "path": "sprites/spr_bonus/spr_bonus.yy",
+    "name": "spr_restart",
+    "path": "sprites/spr_restart/spr_restart.yy",
   },
   "solid": false,
   "visible": true,
@@ -22,8 +22,7 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":64,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":82,"eventType":9,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":4,"eventType":6,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
@@ -32,7 +31,7 @@
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_Win",
+  "name": "obj_restart",
   "tags": [],
   "resourceType": "GMObject",
 }

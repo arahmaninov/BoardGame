@@ -1,8 +1,11 @@
 /// @description
-
+if (diceAvailable) {
+	
 roll = irandom_range(1, 6);
 
 image_index = roll - 1;
+
+layer_destroy_instances(global.eventLayer);
 
 for (var i = 0; i < roll; i++) {
 	
@@ -52,6 +55,15 @@ for (var i = 0; i < roll; i++) {
 
 if (currentCell % 5 == 0) {
 	currentEvent = "BONUS";	
+	instance_create_layer(100, 150, global.eventLayer, obj_BonusEvent);
 } else {
 	currentEvent = "DANGER";
+	instance_create_layer(100, 150, global.eventLayer, obj_DangerEvent);
+}
+
+global.foodAvailable -= personsInCarValue;
+if (global.foodAvailable < 0) {
+		room_goto(roomLoose);
+}
+
 }
