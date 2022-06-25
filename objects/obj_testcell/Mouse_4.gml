@@ -5,7 +5,6 @@ roll = irandom_range(1, 6);
 
 image_index = roll - 1;
 
-instance_destroy(obj_BonusEvent);
 layer_destroy_instances(global.eventLayer);
 
 for (var i = 0; i < roll; i++) {
@@ -56,10 +55,9 @@ for (var i = 0; i < roll; i++) {
 
 if (currentCell % 5 == 0) {
 	currentEvent = "BONUS";	
-	instance_create_layer(100, 150, "Instances", obj_BonusEvent);
+	instance_create_layer(100, 150, global.eventLayer, obj_BonusEvent);
 } else {
 	currentEvent = "DANGER";
-	//event_danger();	
 	instance_create_layer(100, 150, global.eventLayer, obj_DangerEvent);
 }
 
